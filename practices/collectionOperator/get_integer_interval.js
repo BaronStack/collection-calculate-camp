@@ -8,9 +8,8 @@ function get_integer_interval(number_a, number_b) {
       result.push(num);
   }
   else if (number_a > number_b){
-    while (number_a >= number_b)
-      result.push (number_a);
-      number_a --;
+    for(let num = number_a; num >= number_b; --num)
+      result.push (num);
   }
   else
     result.push(number_a);

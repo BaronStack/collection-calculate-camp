@@ -5,7 +5,7 @@ function compute_chain_median(collection) {
     let num = 0;
     result = collection.split('->');
     if (result.length % 2 === 0) {
-        num = (parseInt(result[result.length / 2 - 1]) + parseInt(result.length / 2)) / 2;
+        num = (parseInt(result[result.length / 2 - 1]) + parseInt(result[result.length / 2])) / 2;
     }else {
         num = parseInt(result[(result.length - 1) / 2]);
     }

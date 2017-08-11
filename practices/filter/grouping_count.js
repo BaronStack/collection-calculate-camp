@@ -12,10 +12,12 @@ function grouping_count(collection) {
     let obj = includes(result,item);
     if (obj) {
       obj.num ++;
+    }else {
+      result['${item}'] = obj.num;
     }
   }
   //在这里写入代码
-  return {'1': 6, '2': 3, '3': 4, '4': 2};
+  return result;
 }
 
 module.exports = grouping_count;
