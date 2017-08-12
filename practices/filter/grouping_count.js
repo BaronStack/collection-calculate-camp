@@ -1,23 +1,44 @@
 'use strict';
-function includes(result,item) {
-  if(result.getAttribute(item+''))
-    return item;
-  else
-    return null;
-}
 function grouping_count(collection) {
+
+  let collect = tostring(collection);
+  let array = makearray(collect);
   let result = {};
-  let num = 1;
-  for (let item of collection) {
-    let obj = includes(result,item);
-    if (obj) {
-      obj.num ++;
-    }else {
-      result['${item}'] = obj.num;
-    }
+
+  for(let item of array){
+    result[item.key] = item.count;
   }
-  //在这里写入代码
+
   return result;
 }
 
+function makearray(collection){
+  let result=[];
+  for(let item of collection){
+    let obj = finds(result,item);
+    if(obj){
+      obj.count++;
+    }else{
+      result.push({key: item, count: 1});
+    }
+  }
+  return result;
+}
+
+function finds(collection,ch){
+  for(let item of collection){
+    if(item.key === ch){
+      return item;
+    }
+  }
+  return null;
+}
+
+function tostring(collection){
+  let result = [];
+  for(let item of collection){
+    result.push(item.toString());
+  }
+  return result;
+}
 module.exports = grouping_count;
